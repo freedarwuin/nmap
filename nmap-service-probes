@@ -2205,17 +2205,17 @@ match myproxy m|^VERSION=MYPROXYv([\w._-]+)\nRESPONSE=1\nERROR=authentication fa
 
 # MySQL Handshake packet ( .\0\0\0\x0a ) reference - http://dev.mysql.com/doc/internals/en/connection-phase-packets.html#packet-Protocol::Handshake
 #       Error packet     ( .\0\0\0\xff ) reference - http://dev.mysql.com/doc/internals/en/packet-ERR_Packet.html#cs-packet-err-header
-match mysql m|^.\0\0\0\xff..Host .* is not allowed to connect to this MySQL server$|s p/MySQL/ i/unauthorized/ cpe:/a:mysql:mysql/
+match mysql m|^.\0\0\0\xff..Host .* is not allowed to connect to this MySQL server$|s p/MySQL/ i/unauthorized/ cpe:/a:oracle:mysql/
 match mysql m|^.\0\0\0\xff..Host .* is not allowed to connect to this MariaDB server$|s p/MariaDB/ i/unauthorized/ cpe:/a:mariadb:mariadb/
-match mysql m|^.\0\0\0\xff..Too many connections|s p/MySQL/ i/Too many connections/ cpe:/a:mysql:mysql/
-match mysql m|^.\0\0\0\xff..Host .* is blocked because of many connection errors|s p/MySQL/ i/blocked - too many connection errors/ cpe:/a:mysql:mysql/
-match mysql m|^.\0\0\0\xff..Le h\xf4te '[-.\w]+' n'est pas authoris\xe9 \xe0 se connecter \xe0 ce serveur MySQL$| p/MySQL/ i/unauthorized; French/ cpe:/a:mysql:mysql::::fr/
-match mysql m|^.\0\0\0\xff..Host hat keine Berechtigung, eine Verbindung zu diesem MySQL Server herzustellen\.|s p/MySQL/ i/unauthorized; German/ cpe:/a:mysql:mysql::::de/
-match mysql m|^.\0\0\0\xff..Host '[-\w_.]+' hat keine Berechtigung, sich mit diesem MySQL-Server zu verbinden|s p/MySQL/ i/unauthorized; German/ cpe:/a:mysql:mysql::::de/
-match mysql m|^.\0\0\0\xff..Al sistema '[-.\w]+' non e` consentita la connessione a questo server MySQL$|s p/MySQL/ i/unauthorized; Italian/ cpe:/a:mysql:mysql::::it/
+match mysql m|^.\0\0\0\xff..Too many connections|s p/MySQL/ i/Too many connections/ cpe:/a:oracle:mysql/
+match mysql m|^.\0\0\0\xff..Host .* is blocked because of many connection errors|s p/MySQL/ i/blocked - too many connection errors/ cpe:/a:oracle:mysql/
+match mysql m|^.\0\0\0\xff..Le h\xf4te '[-.\w]+' n'est pas authoris\xe9 \xe0 se connecter \xe0 ce serveur MySQL$| p/MySQL/ i/unauthorized; French/ cpe:/a:oracle:mysql::::fr/
+match mysql m|^.\0\0\0\xff..Host hat keine Berechtigung, eine Verbindung zu diesem MySQL Server herzustellen\.|s p/MySQL/ i/unauthorized; German/ cpe:/a:oracle:mysql::::de/
+match mysql m|^.\0\0\0\xff..Host '[-\w_.]+' hat keine Berechtigung, sich mit diesem MySQL-Server zu verbinden|s p/MySQL/ i/unauthorized; German/ cpe:/a:oracle:mysql::::de/
+match mysql m|^.\0\0\0\xff..Al sistema '[-.\w]+' non e` consentita la connessione a questo server MySQL$|s p/MySQL/ i/unauthorized; Italian/ cpe:/a:oracle:mysql::::it/
 
-match mysql m|^.\0\0\0...Servidor '[-.\w]+' est\xe1 bloqueado por muchos errores de conexi\xf3n\.  Desbloquear con 'mysqladmin flush-hosts'|s p/MySQL/ i/blocked - too many connection errors; Spanish/ cpe:/a:mysql:mysql::::es/
-match mysql m|^.\0\0\0...'Host' '[-.\w]+' n\xe3o tem permiss\xe3o para se conectar com este servidor MySQL| p/MySQL/ i/unauthorized; Spanish/ cpe:/a:mysql:mysql::::es/
+match mysql m|^.\0\0\0...Servidor '[-.\w]+' est\xe1 bloqueado por muchos errores de conexi\xf3n\.  Desbloquear con 'mysqladmin flush-hosts'|s p/MySQL/ i/blocked - too many connection errors; Spanish/ cpe:/a:oracle:mysql::::es/
+match mysql m|^.\0\0\0...'Host' '[-.\w]+' n\xe3o tem permiss\xe3o para se conectar com este servidor MySQL| p/MySQL/ i/unauthorized; Spanish/ cpe:/a:oracle:mysql::::es/
 match mysql m|^.\0\0\0\x0a([\w._-]+)\0............\0\x5f\xd3\x2d\x02\0\0\0\0\0\0\0\0\0\0\0\0\0\0............\0$|s p/Drizzle/ v/$1/
 match mysql m|^.\0\0\0\x0a([\w._-]+)\0............\0\x5f\xd1\x2d\x02\0\0\0\0\0\0\0\0\0\0\0\0\0\0............\0$|s p/Drizzle/ v/$1/
 
@@ -2224,18 +2224,18 @@ match mysql m|^.\0\0\0\x0a(5\.[-_~.+:\w]+MariaDB-[-_~.+:\w]+~bionic)\0|s p/MySQL
 match mysql m|^.\0\0\0\x0a(5\.[-_~.+:\w]+MariaDB-[-_~.+:\w]+)\0|s p/MySQL/ v/$1/ cpe:/a:mariadb:mariadb:$1/
 
 
-match mysql m|^.\0\0\0.(3\.[-_~.+\w]+)\0.*\x08\x02\0\0\0\0\0\0\0\0\0\0\0\0\0\0$|s p/MySQL/ v/$1/ cpe:/a:mysql:mysql:$1/
-match mysql m|^.\0\0\0\x0a(3\.[-_~.+\w]+)\0...\0|s p/MySQL/ v/$1/ cpe:/a:mysql:mysql:$1/
-match mysql m|^.\0\0\0\x0a(4\.[-_~.+\w]+)\0|s p/MySQL/ v/$1/ cpe:/a:mysql:mysql:$1/
-match mysql m|^.\0\0\0\x0a(5\.[-_~.+\w]+)\0|s p/MySQL/ v/$1/ cpe:/a:mysql:mysql:$1/
-match mysql m|^.\0\0\0\x0a(6\.[-_~.+\w]+)\0...\0|s p/MySQL/ v/$1/ cpe:/a:mysql:mysql:$1/
-match mysql m|^.\0\0\0\x0a(8\.[-_~.+\w]+)\0...\0|s p/MySQL/ v/$1/ cpe:/a:mysql:mysql:$1/
-match mysql m|^.\0\0\0\xffj\x04'[\d.]+' .* MySQL|s p/MySQL/ cpe:/a:mysql:mysql/
+match mysql m|^.\0\0\0.(3\.[-_~.+\w]+)\0.*\x08\x02\0\0\0\0\0\0\0\0\0\0\0\0\0\0$|s p/MySQL/ v/$1/ cpe:/a:oracle:mysql:$1/
+match mysql m|^.\0\0\0\x0a(3\.[-_~.+\w]+)\0...\0|s p/MySQL/ v/$1/ cpe:/a:oracle:mysql:$1/
+match mysql m|^.\0\0\0\x0a(4\.[-_~.+\w]+)\0|s p/MySQL/ v/$1/ cpe:/a:oracle:mysql:$1/
+match mysql m|^.\0\0\0\x0a(5\.[-_~.+\w]+)\0|s p/MySQL/ v/$1/ cpe:/a:oracle:mysql:$1/
+match mysql m|^.\0\0\0\x0a(6\.[-_~.+\w]+)\0...\0|s p/MySQL/ v/$1/ cpe:/a:oracle:mysql:$1/
+match mysql m|^.\0\0\0\x0a(8\.[-_~.+\w]+)\0...\0|s p/MySQL/ v/$1/ cpe:/a:oracle:mysql:$1/
+match mysql m|^.\0\0\0\xffj\x04'[\d.]+' .* MySQL|s p/MySQL/ cpe:/a:oracle:mysql/
 
 # This will get awkward if Sphinx goes to version 3.
 match mysql m|^.\0\0\0.([012]\.[\w.-]+)(?: \([0-9a-f]+\))?\0|s p/Sphinx Search SphinxQL/ v/$1/ cpe:/a:sphinx:sphinx_search:$1/
 
-match mysql m|^.\0\0\0\x0a(0[\w._-]+)\0| p/MySQL instance manager/ v/$1/ cpe:/a:mysql:mysql:$1/
+match mysql m|^.\0\0\0\x0a(0[\w._-]+)\0| p/MySQL instance manager/ v/$1/ cpe:/a:oracle:mysql:$1/
 
 match minisql m|^.\0\0\x000:23:([\d.]+)\n$|s p/Mini SQL/ v/$1/
 
@@ -5456,7 +5456,7 @@ match modbus m|^\r\n\r\n\0\x03[\0\x01]\x80[\x0a\x0b]| p/Modbus TCP/ i/gateway/
 # https://www.kernel.org/pub/software/admin/mon/
 match mon m|^520 invalid command\n$| p/mon service monitoring daemon/
 
-match mysql m|^\x10\0\0\x01\xff\x13\x04Bad handshake$| p/MySQL/ cpe:/a:mysql:mysql/
+match mysql m|^\x10\0\0\x01\xff\x13\x04Bad handshake$| p/MySQL/ cpe:/a:oracle:mysql/
 
 # Not sure if this is target MAC or scanner MAC
 match ndv m|^NDV_([\d.]+) (?:[0-9a-f][0-9a-f]:){5}[0-9a-f][0-9a-f]\n| p/Neocoretech NDV/ v/$1/ cpe:/a:neocoretech:ndv:$1/
@@ -11279,7 +11279,7 @@ match bittorrent-tracker m|^HTTP/1\.1 200 OK\r\nServer: MLdonkey\r\n| p/MLDonkey
 # exist elsewhere in the universe\nbut alas, not here" under FourOhFourRequest.
 match bittorrent-tracker m|^HTTP/1\.0 200 OK\r\n.*<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1\.1//EN\" \"http://www\.w3\.org/TR/xhtml11/DTD/xhtml11\.dtd\">\n<html><head><title>BitTorrent download info</title>\n<link rel=\"shortcut icon\" href=\"/favicon\.ico\">\n.*<strong>tracker version:</strong> ([\w._-]+)|s p/BitTornado tracker httpd/ v/$1/
 
-match ndb_mgmd m|^result: Unknown command, 'GET / HTTP/1\.0'\n\n| p/MySQL cluster management server/ v/5.1/ cpe:/a:mysql:mysql:5.1/
+match ndb_mgmd m|^result: Unknown command, 'GET / HTTP/1\.0'\n\n| p/MySQL cluster management server/ v/5.1/ cpe:/a:oracle:mysql:5.1/
 
 # Original path was "/opt/openerp/server/bin/service/netrpc_server\.py\"
 match net-rpc m|^     4041\(lp1\ncexceptions\nValueError\np2\n\(S\"invalid literal for int\(\) with base 10: 'GET / HT'\"\np3\ntp4\nRp5\naS'Traceback \(most recent call last\):\\n  File \"([\w._/-]+)/netrpc_server\.py\", line 69, in run\\n| p/OpenERP NET-RPC/ i/path: $1/ o/Unix/
